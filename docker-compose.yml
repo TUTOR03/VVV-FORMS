@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 server:app
+    volumes:
+      - .:/usr/src/app/
+    expose:
+      - 5000
+    env_file:
+      - ./.env.dev
+  nginx:
+    build: ./services/nginx
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 1337:5500
+    depends_on:
+      - web
