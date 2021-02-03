@@ -7,8 +7,6 @@ app = Flask(__name__)
 spreadsheet = 'UPML VVV TEST'
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-creds = ServiceAccountCredentials.from_json_keyfile_name('UPML VVV-746996c120b5.json', scope)
-client = gspread.authorize(creds)
 
 @app.route('/', methods = ['GET'])
 def main_page():
@@ -16,6 +14,8 @@ def main_page():
 
 @app.route('/api/results', methods = ['POST'])
 def get_data():
+	creds = ServiceAccountCredentials.from_json_keyfile_name('UPML VVV-746996c120b5.json', scope)
+	client = gspread.authorize(creds)
 	sh = client.open(spreadsheet)
 	worksheet = sh.get_worksheet(0)
 	data = worksheet.get_all_values()

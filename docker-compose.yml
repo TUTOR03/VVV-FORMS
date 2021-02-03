@@ -15,6 +15,6 @@ services:
     volumes:
       - .:/usr/src/app/
     ports:
-      - 1337:5500
+      - 1337:80
     depends_on:
       - web

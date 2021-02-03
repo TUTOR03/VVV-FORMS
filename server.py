@@ -1,5 +1,7 @@
 from flask.cli import FlaskGroup
 from server import app
+from itertools import permutations
+import flask
 
 cli = FlaskGroup(app)
 SERVER_PORT = '5000'

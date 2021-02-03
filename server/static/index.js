@@ -1,16 +1,24 @@
 let prev_state = []
+let loaded = false
+let loader = document.querySelector('#loader')
+let tableHead = document.querySelector('#tableHead')
+tableHead.hidden = true
+
+const elementFromText = (st) => {
+	const elem = document.createElement('td')
+	elem.classList.add('text-center')
+	elem.innerHTML = st
+	return(elem)
+}
 
 const change_tabel = (data) => {
 	let table = document.querySelector('#tableBody')
 	let new_table = document.createElement('tbody')
 	data.forEach((ob, obIndex)=>{
 		let temp_tr = document.createElement('tr')
-		let td_0 = document.createElement('td')
-		let td_1 = document.createElement('td')
-		let td_2 = document.createElement('td')
-		td_0.textContent = `${obIndex+1}` 
-		td_1.textContent = `${ob[0]} Поток`
-		td_2.textContent = `${ob[1]}`
+		let td_0 = elementFromText(`<h2>${obIndex+1}</h2>`)
+		let td_1 = elementFromText(`<h2>${ob[0]} Поток</h2>`)
+		let td_2 = elementFromText(`<h2>${ob[1]}</h2>`)
 		temp_tr.append(td_0, td_1, td_2)
 		new_table.append(temp_tr)
 	})
@@ -31,6 +39,11 @@ const fetch_data = () => {
 	.then(responseData => {
 		if(responseData!=prev_state){
 			prev_state = responseData
+			if(!loaded){
+				loader.remove()
+				tableHead.hidden = false
+				loaded = true 
+			}
 			change_tabel(responseData)
 		}
 	})
