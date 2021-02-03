@@ -11,10 +11,10 @@ services:
     env_file:
       - ./.env.dev
   nginx:
-    build: ./services/nginx
+    build: ./nginx
     volumes:
       - .:/usr/src/app/
     ports:
-      - 1337:80
+      - 5500:80
     depends_on:
       - web
