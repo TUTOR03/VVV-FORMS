@@ -17,7 +17,7 @@ const change_tabel = (data) => {
 	data.forEach((ob, obIndex)=>{
 		let temp_tr = document.createElement('tr')
 		let td_0 = elementFromText(`<h2>${obIndex+1}</h2>`)
-		let td_1 = elementFromText(`<h2>${ob[0]} Поток</h2>`)
+		let td_1 = elementFromText(`<h2>${ob[0]} Поток ${2003+ob[0]} год</h2>`)
 		let td_2 = elementFromText(`<h2>${ob[1]}</h2>`)
 		temp_tr.append(td_0, td_1, td_2)
 		new_table.append(temp_tr)
