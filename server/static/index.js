@@ -2,6 +2,7 @@ let prev_state = []
 let loaded = false
 let loader = document.querySelector('#loader')
 let tableHead = document.querySelector('#tableHead')
+let allCounter = document.querySelector('#allCounter')
 tableHead.hidden = true
 
 const elementFromText = (st) => {
@@ -14,7 +15,9 @@ const elementFromText = (st) => {
 const change_tabel = (data) => {
 	let table = document.querySelector('#tableBody')
 	let new_table = document.createElement('tbody')
+	let counter = 0
 	data.forEach((ob, obIndex)=>{
+		counter+=ob[1]
 		let temp_tr = document.createElement('tr')
 		let td_0 = elementFromText(`<h2>${obIndex+1}</h2>`)
 		let td_1 = elementFromText(`<h2>${ob[0]} Поток ${2003+ob[0]} год</h2>`)
@@ -24,6 +27,8 @@ const change_tabel = (data) => {
 	})
 	table.replaceWith(new_table)
 	new_table.id = 'tableBody'
+	console.log(counter)
+	allCounter.innerHTML = counter
 }
 
 const fetch_data = () => {

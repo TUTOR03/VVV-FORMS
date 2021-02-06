@@ -25,7 +25,7 @@
 	<div id='loader' class="container-fluid d-flex align-items-center justify-content-center" style="height: 80vh">
 		<div class="spinner-border text-primary" style="width: 10rem; height: 10rem;" role="status"></div>
 	</div>
-	<div class="container mb-4 mt-2">
+	<div class="container-sm mb-4 mt-2">
 		<table class="table table-hover">
 			<thead id='tableHead' class="bg-primary text-white" hidden>
 				<tr>
@@ -43,6 +43,11 @@
 			<tbody id='tableBody'>
 			</tbody>
 		</table>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-12 text-center">
+				<h1>Всего выпускников: <p id='allCounter' style="display: inline-block;">0</p></h1>
+			</div>
+		</div>
 	</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script type="text/javascript" src='{{ url_for("static", filename="index.js") }}'></script>
